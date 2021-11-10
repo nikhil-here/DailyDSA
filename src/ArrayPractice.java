@@ -1,9 +1,11 @@
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 
 public class ArrayPractice {
 
     public static void main(String[] args) {
         //problem1_reverse_array();
-        problem2_min_max_value();
+        //problem2_min_max_value();
+        problem3_kth_smallest_element();
     }
 
     static class Pair {
@@ -79,8 +81,8 @@ public class ArrayPractice {
         System.out.printf("Min : %d and Max : %d",min,max);
          */
 
-        Pair minMaxPair = getMinMax(arr,0,arr.length - 1);
-        System.out.printf("Min : %d and Max : %d",minMaxPair.min,minMaxPair.max);
+        Pair minMaxPair = getMinMax(arr, 0, arr.length - 1);
+        System.out.printf("Min : %d and Max : %d", minMaxPair.min, minMaxPair.max);
 
 
     }
@@ -119,5 +121,30 @@ public class ArrayPractice {
 
             return minMaxpair;
         }
+    }
+
+    private static void problem3_kth_smallest_element() {
+        int[] arr = new int[]{11, 2, 33, 44, 55, 66};
+        int k = 2;
+
+        arr = sortArray(arr);
+
+        System.out.printf("%d th smallest element is %d", k, arr[k-1]);
+    }
+
+    private static int[] sortArray(int[] arr) {
+        int temp;
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+
+                if (arr[i] > arr[j]) {
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+
+        return arr;
     }
 }
